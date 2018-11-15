@@ -1,0 +1,106 @@
+#Base de Datos Seguimiento de Atencion
+drop database if exists seguimientoatencion;
+create database if not exists seguimientoatencion;
+use seguimientoatencion;
+
+#Crear Tabla Personas
+create table if not exists personas(
+idpersona int auto_increment not null,
+nombres varchar(45) not null,
+apellidos varchar(45) not null,
+dni int(8) not null,
+direccion varchar(80) not null,
+fecnac date not null,
+genero enum ('M','F')  not null,
+email varchar(50) not null,
+telefono int(9) not null,
+estcivil enum ('soltero','casado','viudo','divorciado') not null,
+estado enum ('activo','inactivo') not null,
+tipo enum ('paciente','doctor') not null,
+
+constraint pk_idpersona primary key(idpersona)
+);
+
+#Crear Tabla Usuarios
+create table if not exists usuario(
+idpersona int not null,
+usuario VARCHAR(20) NOT NULL,
+pass VARCHAR(16) NOT NULL,
+
+constraint pk_usuario primary key(idpersona),
+constraint fk_usuarioper foreign key(idpersona) references personas(idpersona)
+);
+
+#Crear Tabla doctores
+create table if not exists doctores(
+iddoctor int auto_increment not null,
+especialidad varchar(20) not null,
+idpersona int not null,
+
+constraint pk_iddoctor primary key(iddoctor),
+constraint fk_iddoctor_per foreign key(idpersona) references personas(idpersona)
+);
+
+#Crear Tabla AtencionCitas
+create table if not exists atencioncitas(
+idatencion int auto_increment not null,
+fecha date not null,
+consulta varchar(50) not null,
+fechacita date not  null,
+idarea int not null,
+idpersona int not null,
+
+constraint pk_idatencion primary key(idatencion),
+constraint fk_idatencion_person foreign key(idpersona) references personas(idpersona)
+);
+
+#Crear Tabla Areas
+create table if not exists areas(
+idarea int auto_increment not null,
+descripcion varchar(50) not null,
+idatencion int not null,
+constraint pk_idarea primary key(idarea),
+constraint fk_idareas_aten foreign key(idatencion) references atencioncitas(idatencion)
+);
+
+#Crear Tabla Tratamiento
+create table if not exists tratamiento(
+idtratamiento int auto_increment not null,
+descripcion varchar(100) not null,
+idatencion int not null,
+constraint pk_idtratamiento primary key(idtratamiento),
+constraint fk_idtratamiento_at foreign key(idatencion) references atencioncitas(idatencion)
+);
+
+#Crear Tabla Analisis
+create table if not exists analisis(
+idanalisis int auto_increment not null,
+descripcion varchar(50) not null,
+idatencion int not null,
+
+constraint pk_idanalisis primary key(idanalisis),
+constraint fk_idtratamiento_ate foreign key(idatencion) references atencioncitas(idatencion)
+);
+
+#Crear Tabla Diagnostico
+create table if not exists diagnostico(
+iddiagnostico int auto_increment not null,
+descripcion varchar(100) not null,
+idatencion int not null,
+
+constraint pk_iddiagnostico primary key(iddiagnostico),
+constraint fk_iddiagnostico_at foreign key(idatencion) references atencioncitas(idatencion)
+
+);
+
+#Crear Tabla Seguimiento
+create table if not exists seguimiento(
+idseguimiento int auto_increment not null,
+aentrega varchar(30) not null,
+arecepcion varchar(30) not null,
+idatencion int not null,
+idarea int not null,
+
+constraint pk_idseguimiento primary key(idseguimiento),
+constraint fk_idseguimiento_atencion foreign key(idatencion) references atencioncitas(idatencion)
+);
