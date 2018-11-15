@@ -1,7 +1,7 @@
 <?php
-class Tratamientos
+class Areas
 {
-	private $idtratamiento;
+	private $id;
 	private $descripcion;
 
 	public function __GET($x)
