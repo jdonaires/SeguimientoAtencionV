@@ -1,8 +1,9 @@
 <?php
-class Tratamientos
+class Analisis
 {
-	private $idtratamiento;
+	private $id;
 	private $descripcion;
+
 
 	public function __GET($x)
 	{

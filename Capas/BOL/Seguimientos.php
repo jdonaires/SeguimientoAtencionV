@@ -1,8 +1,9 @@
 <?php
-class Tratamientos
+class Seguimientos
 {
-	private $idtratamiento;
-	private $descripcion;
+	private $id;
+	private $AreaEntrefa;
+	private $AreaRecepcion;
 
 	public function __GET($x)
 	{
