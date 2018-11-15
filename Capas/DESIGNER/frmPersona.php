@@ -1,4 +1,4 @@
-<?php
+	<?php
 require_once('../BOL/persona.php');
 require_once('../DAO/personaDAO.php');
 
