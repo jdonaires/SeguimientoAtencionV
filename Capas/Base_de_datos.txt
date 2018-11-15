@@ -1,0 +1,220 @@
+#Base de Datos Seguimiento de Atencion
+drop database if exists seguimientoatencion;
+create database if not exists seguimientoatencion;
+use seguimientoatencion;
+
+#Crear Tabla Personas
+create table if not exists persona(
+idpersona int auto_increment not null,
+nombres varchar(45) not null,
+apellidos varchar(45) not null,
+dni int(8) not null unique,
+direccion varchar(80) not null,
+fecnac date not null,
+genero enum ('m','f')  not null,
+email varchar(50) not null unique,
+telefono int(9)  null,
+estado enum ('activo','inactivo') not null,
+tipo enum ('paciente','doctor') not null,
+
+constraint pk_idpersona primary key(idpersona)
+);
+
+
+#Crear Tabla Areas
+create table if not exists areas(
+idarea int auto_increment not null,
+descripcion varchar(50) not null,
+
+constraint pk_idarea primary key(idarea)
+);
+#Crear Tabla Usuarios
+create table if not exists usuario(
+idpersona int not null,
+usuario VARCHAR(20) NOT NULL,
+pass VARCHAR(16) NOT NULL,
+
+constraint pk_usuario primary key(idpersona),
+constraint fk_usuarioper foreign key(idpersona) references persona(idpersona)
+);
+
+#Crear Tabla Pacientes
+create table if not exists paciente(
+idpaciente int auto_increment not null,
+nrohistoria varchar(20) not null,
+idpersona int not null,
+
+constraint pk_idpaciente primary key(idpaciente),
+constraint fk_idpaciente_per foreign key(idpersona) references persona(idpersona)
+);
+
+#Crear Tabla doctores
+create table if not exists doctores(
+iddoctor int auto_increment not null,
+especialidad varchar(20) not null,
+idpersona int not null,
+
+constraint pk_iddoctor primary key(iddoctor),
+constraint fk_iddoctor_per foreign key(idpersona) references persona(idpersona)
+);
+
+#Crear Tabla AtencionCitas
+create table if not exists atencioncitas(
+idatencion int auto_increment not null,
+fecha date null,
+fechacita date  null,
+idpersona int not null,
+idarea int not null,
+
+constraint pk_idatencion primary key(idatencion),
+constraint fk_idatencion_person foreign key(idpersona) references persona(idpersona),
+constraint fk_idatencion_area foreign key(idarea) references areas(idarea)
+);
+
+
+#Crear Tabla Tratamiento
+create table if not exists tratamiento(
+idtratamiento int auto_increment not null,
+descripcion varchar(100) not null,
+idatencion int not null,
+constraint pk_idtratamiento primary key(idtratamiento),
+constraint fk_idtratamiento_at foreign key(idatencion) references atencioncitas(idatencion)
+);
+
+#Crear Tabla Analisis
+create table if not exists analisis(
+idanalisis int auto_increment not null,
+descripcion varchar(50) not null,
+idatencion int not null,
+
+constraint pk_idanalisis primary key(idanalisis),
+constraint fk_idtratamiento_ate foreign key(idatencion) references atencioncitas(idatencion)
+);
+
+#Crear Tabla Diagnostico
+create table if not exists diagnostico(
+iddiagnostico int auto_increment not null,
+descripcion varchar(100) not null,
+idatencion int not null,
+
+constraint pk_iddiagnostico primary key(iddiagnostico),
+constraint fk_iddiagnostico_at foreign key(idatencion) references atencioncitas(idatencion)
+
+);
+
+#Crear Tabla Seguimiento
+create table if not exists seguimiento(
+idseguimiento int auto_increment not null,
+aentrega varchar(30) not null,
+arecepcion varchar(30) not null,
+idatencion int not null,
+
+constraint pk_idseguimiento primary key(idseguimiento),
+constraint fk_idseguimiento_atencion foreign key(idatencion) references atencioncitas(idatencion)
+);
+
+
+#PROCEDIMIENTO ALMACENADO PARA VALIDAR USUARIO #
+DELIMITER $$
+CREATE PROCEDURE up_usuario
+(
+IN _nombre VARCHAR(50),
+IN _pass VARCHAR(100)
+)
+BEGIN
+SELECT * FROM usuario WHERE nombre=_nombre AND pass=_pass;
+END
+$$
+
+#PROCEDIMIENTOS ALMACENADOS#
+
+DELIMITER ;;
+CREATE  PROCEDURE up_insertar_areas(
+		IN _descripcion varchar(50)
+)
+BEGIN
+		insert into areas(descripcion)
+		values (_descripcion);
+END ;;
+
+
+DELIMITER ;;
+CREATE  PROCEDURE up_insertar_persona(
+		IN _nombres varchar(50),
+		IN _apellidos varchar(40),
+		IN _dni int(8),
+		IN _direccion varchar(80),
+		IN _fecnac date,
+        IN _genero varchar(1),
+        IN _email varchar(50),
+        IN _telefono int(9),
+        IN _estado varchar(10),
+        IN _tipo varchar(20)
+)
+BEGIN
+	INSERT INTO personas (nombres,apellidos,dni,direccion,fecnac,genero,email,telefono,estado,tipo)
+    values (_nombres,_apellidos,_dni,_direccion,_fecnac,_genero,_email,_telefono,_estado,_tipo);
+END ;;
+
+
+DELIMITER ;;
+CREATE PROCEDURE up_insertar_persona_paciente(
+		IN _nombres varchar(50),
+		IN _apellidos varchar(40),
+		IN _dni int(8),
+		IN _direccion varchar(80),
+		IN _fecnac date,
+        IN _genero varchar(1),
+        IN _email varchar(50),
+        IN _telefono int(9),
+        IN _estado varchar(10),
+        IN _tipo varchar(20),
+
+        IN _nrohistoria varchar(20)
+)
+BEGIN
+		INSERT INTO personas (nombres,apellidos,dni,direccion,fecnac,genero,email,telefono,estado,tipo)
+		values (_nombres,_apellidos,_dni,_direccion,_fecnac,_genero,_email,_telefono,_estado,_tipo);
+        insert into paciente (nrohistoria)
+        values (_nrohistoria);
+END ;;
+
+
+DELIMITER ;;
+CREATE PROCEDURE up_insertar_persona_doctores(
+		IN _nombres varchar(50),
+		IN _apellidos varchar(40),
+		IN _dni int(8),
+		IN _direccion varchar(80),
+		IN _fecnac date,
+        IN _genero varchar(1),
+        IN _email varchar(50),
+        IN _telefono int(9),
+        IN _estado varchar(10),
+        IN _tipo varchar(20),
+
+        IN _especialidad varchar(20)
+)
+BEGIN
+		insert into persona (nombres,apellidos,dni,direccion,fecnac,genero,email,telefono,estado,tipo)
+		values (_nombres,_apellidos,_dni,_direccion,_fecnac,_genero,_email,_telefono,_estado,_tipo);
+        insert into doctores (especialidad)
+        values (_especialidad);
+END ;;
+
+#PROCEDIMIENTOS PARA LISTAR#
+DELIMITER ;;
+CREATE PROCEDURE up_areas_listar
+(
+)
+BEGIN
+SELECT idarea, descripcion from areas order by idarea asc;
+END;;
+
+DELIMITER $$
+CREATE PROCEDURE up_persona_listar
+(
+)
+BEGIN
+SELECT idpersona, nombres, apellidos, dni, direccion, fecnac, genero, email, telefono, estado, tipo from persona order by idpersona asc;
+END;;
