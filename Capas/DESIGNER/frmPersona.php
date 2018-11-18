@@ -9,7 +9,14 @@ if(isset($_POST['guardar']))
 {
 	$per->__SET('nombres',          $_POST['nombres']);
 	$per->__SET('apellidos',        $_POST['apellidos']);
-	$per->__SET('dni', $_POST['dni']);
+	$per->__SET('dni', 							$_POST['dni']);
+	$per->__SET('direccion', 				$_POST['direccion']);
+	$per->__SET('fecnac', 					$_POST['fecnac']);
+	$per->__SET('genero', 					$_POST['genero']);
+	$per->__SET('email', 						$_POST['email']);
+	$per->__SET('telefono', 				$_POST['telefono']);
+	$per->__SET('estado', 					$_POST['estado']);
+	$per->__SET('tipo', 						$_POST['tipo']);
 
 	$perDAO->Registrar($per);
 	header('Location: frmPersona.php');
@@ -43,6 +50,34 @@ if(isset($_POST['guardar']))
                         <tr>
                             <th style="text-align:left;">DNI</th>
                             <td><input type="text" name="dni" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">Direccion</th>
+                            <td><input type="text" name="direccion" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">Fecha de Nacimineto</th>
+                            <td><input type="date" name="fecnac" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">Genero</th>
+                            <td><input type="text" name="genero" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">E-mail</th>
+                            <td><input type="text" name="email" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">Telefono</th>
+                            <td><input type="text" name="telefono" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">Estado</th>
+                            <td><input type="text" name="estado" value="" style="width:100%;" /></td>
+                        </tr>
+												<tr>
+                            <th style="text-align:left;">Tipo</th>
+                            <td><input type="text" name="tipo" value="" style="width:100%;" /></td>
                         </tr>
                         <tr>
                             <td colspan="2">

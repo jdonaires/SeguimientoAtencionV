@@ -1,17 +1,17 @@
 <?php
 class Persona
 {
-	private $idpersona;
-	private $nombres;
-	private $apellidos;
-	private $dni;
-	private $direccion;
-	private $fecnac;
-	private $genero;
-	private $email;
-	private $telefono;
-	private $estado;
-	private $cargo;
+	private $idpersonas;
+	private $nombre;
+	private $apellido;
+	private $Dni;
+	private $Direccion;
+	private $Fecnac;
+	private $Genero;
+	private $Email;
+	private $Telefono;
+	private $Estado;
+	private $Cargo;
 
 	public function __GET($x)
 	{

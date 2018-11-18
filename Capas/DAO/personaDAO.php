@@ -20,13 +20,13 @@ class PersonaDAO
     $statement->bindParam(1,$persona->__GET('nombres'));
 		$statement->bindParam(2,$persona->__GET('apellidos'));
 		$statement->bindParam(3,$persona->__GET('dni'));
-		$statement->bindParam(3,$persona->__GET('direccion'));
-		$statement->bindParam(3,$persona->__GET('fecnac'));
-		$statement->bindParam(3,$persona->__GET('genero'));
-		$statement->bindParam(3,$persona->__GET('email'));
-		$statement->bindParam(3,$persona->__GET('telefono'));
-		$statement->bindParam(3,$persona->__GET("estado"));
-		$statement->bindParam(3,$persona->__GET('tipo'));
+		$statement->bindParam(4,$persona->__GET('direccion'));
+		$statement->bindParam(5,$persona->__GET('fecnac'));
+		$statement->bindParam(6,$persona->__GET('genero'));
+		$statement->bindParam(7,$persona->__GET('email'));
+		$statement->bindParam(8,$persona->__GET('telefono'));
+		$statement->bindParam(9,$persona->__GET("estado"));
+		$statement->bindParam(10,$persona->__GET('tipo'));
     $statement -> execute();
 
 		} catch (Exception $e)
@@ -41,7 +41,7 @@ class PersonaDAO
 		{
 			$result = array();
 
-			$statement = $this->pdo->prepare("call up_buscar_persona(?)");
+			$statement = $this->pdo->prepare("call up_persona_listar(?)");
 			$statement->bindParam(1,$persona->__GET('dni'));
 			$statement->execute();
 
