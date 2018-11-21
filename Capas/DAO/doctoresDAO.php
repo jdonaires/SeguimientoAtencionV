@@ -14,7 +14,7 @@ class doctoresDAO
 public function insertardoctores ($doctores, persona $persona)
     {
         try {
-            $statement = $this->pdo->prepare("call up_insertar_persona_empleados(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $statement = $this->pdo->prepare("call up_insertar_persona_doctores(?,?,?,?,?,?,?,?,?,?,?,?)");
 
             $statement->bindValue(1, $persona->__GET('nombres'));
             $statement->bindValue(2,  $persona->__GET('apellidos'));
@@ -27,7 +27,7 @@ public function insertardoctores ($doctores, persona $persona)
             $statement->bindValue(9,  $persona->__GET('estado'));
             $statement->bindValue(10, $persona->__GET('tipo'));
 
-            $statement->bindValue(9, $doctores->__GET('turno'));
+            $statement->bindValue(11, $doctores->__GET('turno'));
 
 
 
