@@ -1,9 +1,9 @@
 <?php
 require_once('../DAL/DBAccess.php');
-require_once('../BOL/empleados.php');
+require_once('../BOL/pacientes.php');
 require_once('../BOL/persona.php');
 
-class empleadoDAO
+class pacienteDAO
 {
   private $pdo;
   public function __CONSTRUC();
@@ -12,10 +12,10 @@ class empleadoDAO
           $this->pdo = $dba->get_connection();
 }
 
-public function insertarEmpleado(empleado $empleado, persona $persona)
+public function insertarPaciente(empleado $paciente, persona $persona)
     {
         try {
-            $statement = $this->pdo->prepare("call up_insertar_persona_empleados(?,?,?,?,?,?,?,?,?,?,?,?)");
+            $statement = $this->pdo->prepare("call up_insertar_persona_empleados(?,?,?,?,?,?,?,?,?,?,?)");
 
             $statement->bindValue(1,  $persona->__GET('nombres'));
             $statement->bindValue(2,  $persona->__GET('apellidos'));
@@ -28,8 +28,8 @@ public function insertarEmpleado(empleado $empleado, persona $persona)
             $statement->bindValue(9,  $persona->__GET('estado'));
             $statement->bindValue(10, $persona->__GET('tipo'));
 
-            $statement->bindValue(11,  $empleado->__GET('turno'));
-            $statement->bindValue(12, $empleado->__GET('cargo'));
+            $statement->bindValue(11,  $paciente->__GET('nrohistoria'));
+
 
 
 
@@ -39,9 +39,8 @@ public function insertarEmpleado(empleado $empleado, persona $persona)
             return $count;
 
         } catch (Exception $e) {
-            die("insertarempleado function  ->" . $e->getMessage());
+            die("insertarpaciente function  ->" . $e->getMessage());
         }
     }
-
 
  ?>
