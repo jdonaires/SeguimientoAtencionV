@@ -1,0 +1,76 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-image: url(../IMG/fondoprincipal.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+header{
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+}
+/**menu**/
+nav{
+	background: #34495E;
+
+	position: relative;
+}
+
+nav ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+nav > ul > li{
+	float: left;
+}
+/** espaciado entre icono y boton **/
+/**Inicio**/
+.menu .icon-home2{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+/**San juan en linea**/
+.menu .icon-sphere{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+/**listar persona**/
+.menu .icon-profile{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+/**insertar lista**/
+.menu .icon-user-plus{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+/**registro de asisitencia**/
+.menu .icon-user-check{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: white;
+	display: block;
+	padding: 10px 24px;
+	font: oblique bold 100% cursive;
+}
+/**efecto cuando pasa el cursor por el boton**/
+nav ul li a:hover{
+	background: #2471A3;
+}
