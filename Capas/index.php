@@ -18,7 +18,7 @@
         <li><a href="#"><span class="cuarto"><i class="icon icon-user-plus"></i></span>Nuevo Registro</a>
           <ul>
             <li><a href="#">Doctor</a></li>
-            <li><a href="#">Empleado</a></li>
+            <li><a href="DESIGNER/Empleados.php">Empleado</a></li>
             <li><a href="#">Paciente</a></li>
           </ul>
         </li>
@@ -33,6 +33,8 @@
       </ul>
     </nav>
   </header>
+
+
       <div class="wrap">
     <div class="widget">
       <div class="fecha">

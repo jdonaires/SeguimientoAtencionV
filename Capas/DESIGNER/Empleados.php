@@ -1,45 +1,78 @@
-<html>
+<?php
+ ?>
+
+ <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title> Formulario Empleados </title>
-<meta charset="utf-8">
-<link type="text />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../CSS/estilos.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<title>Registrar Empleado</title>
 </head>
-
 <body>
-    <div id="registrar">
+	<div class="contenedor-formulario">
+		<div class="wrap">
+			<form action="" class="formulario" name="formulario_registro" method="post">
+				<div>
+					<div class="input-group">
+						<input type="text" id="nombre" name="nombre">
+						<label class="label" for="nombre">Nombres:</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="apellido" name="apellido">
+						<label class="label" for="apellido">Apellidos:</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="dni" name="dni">
+						<label class="label" for="dni">DNI:</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="direccion" name="direccion">
+						<label class="label" for="direccion">Direccion:</label>
+					</div>
+					<div class="input-group">
+						<input type="date" id="fecnac" name="fecnac">
+						<label class="label" for="fecnac"></label>
+					</div>
+					<div class="input-group radio">
+						<input type="radio" name="sexo" id="hombre" value="Hombre">
+						<label for="hombre">Hombre</label>
+						<input type="radio" name="sexo" id="mujer" value="Mujer">
+						<label for="mujer">Mujer</label>
+					</div>
+					<div class="input-group">
+						<input type="email" id="correo" name="correo">
+						<label class="label" for="correo">E-mail:</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="telefono" name="telefono">
+						<label class="label" for="telefono">Telefono:</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="estado" name="estado">
+						<label class="label" for="estado">Estado:</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="usuario" name="usuario">
+						<label class="label" for="usuario">Usuario:</label>
+					</div>
+					<div class="input-group">
+						<input type="password" id="pass" name="pass">
+						<label class="label" for="pass">Contraseña:</label>
+					</div>
+					<div class="input-group">
+						<input type="password" id="pass2" name="pass2">
+						<label class="label" for="pass2">Repetir Contraseña:</label>
+					</div>
 
-                <form id="form-login" action="#" method="post" >
-                    <p><label for="nombre">Nombre:</label></p>
-                        <input name="nombre" type="text" id="nombre" class="nombre" placeholder=" Ingrese nombre" autofocus=""/ ></p>
 
+					<input type="submit" id="btn-submit" value="Enviar">
+				</div>
+			</form>
+		</div>
+	</div>
 
-
-
-                    <p><label for="apellidos">Apellidos:</label></p>
-                        <input name="apellidos" type="text" id="apellidos" class="apellidos" placeholder="Ingrese apellido" /></p>
-
-
-                    <p><label for="correo">Correo:</label></p>
-                        <input name="correo" type="text" id="correo" class="correo" placeholder="gmail" /></p>
-
-                    <p><label for="direccion">direccion:</label></p>
-                            <input name="direccion" type="text" id="direccion" class="direccion" placeholder="direccion" /></p>
-
-                        <p><label for="telefono">telefono:</label></p>
-                                <input name="telefono" type="text" id="telefono" class="telefono" placeholder="telefono" /></p>
-
-                          <p><label for="DNI">DNI:</label></p>
-                                        <input name="DNI" type="text" id="DNI" class="DNI" placeholder="DNI" /></p>
-
-                    <p><label for="pass">Password:</label></p>
-                        <input name="pass" type="password" id="pass" class="pass" placeholder=" password"/ ></p>
-
-
-
-                    <p id="bot"><input name="submit" type="submit" id="boton" value="Registrar" class="boton"/></p>
-                </form>
-
-
+	<script src="../JS/formulario.js"></script>
 </body>
-
 </html>
