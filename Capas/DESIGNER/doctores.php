@@ -24,7 +24,7 @@
           <ul>
             <li><a href="doctores.php">Doctor</a></li>
             <li><a href="Empleados.php">Empleado</a></li>
-            <li><a href="paciente.php">Paciente</a></li>
+            <li><a href="#">Paciente</a></li>
           </ul>
         </li>
         <li><a href="#"><span class="quinto"><i class="icon icon-profile"></i></span>Registros</a>
@@ -84,9 +84,14 @@
 						<label class="label" for="estado">Estado:</label>
 					</div>
 					<div class="input-group">
-						<input type="text" id="nhistoria" name="nhistoria">
-						<label class="label" for="nhistoria">Nro Historia Mëdica:</label>
+						<input type="text" id="especialidad" name="especialidad">
+						<label class="label" for="especialidad">Especialidad:</label>
 					</div>
+					<div class="input-group">
+						<input type="text" id="turno" name="turno">
+						<label class="label" for="turno">Turno:</label>
+					</div>
+
 
 					<input type="submit" id="btn-submit" value="Enviar">
 				</div>

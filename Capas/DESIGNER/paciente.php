@@ -85,7 +85,7 @@
 					</div>
           <div class="input-group">
 						<input type="text" id="nhistoria" name="nhistoria">
-						<label class="label" for="nhistoria">Nro. Historia Médica:</label>
+						<label class="label" for="nhistoria">Nro. Historia Medica:</label>
 					</div>
 
 					<input type="submit" id="btn-submit" value="Enviar">
