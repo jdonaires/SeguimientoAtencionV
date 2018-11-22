@@ -19,7 +19,7 @@
           <ul>
             <li><a href="DESIGNER/doctores.php">Doctor</a></li>
             <li><a href="DESIGNER/Empleados.php">Empleado</a></li>
-            <li><a href="#">Paciente</a></li>
+            <li><a href="paciente.php">Paciente</a></li>
           </ul>
         </li>
         <li><a href="#"><span class="quinto"><i class="icon icon-profile"></i></span>Registros</a>

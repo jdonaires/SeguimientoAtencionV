@@ -84,26 +84,9 @@
 						<label class="label" for="estado">Estado:</label>
 					</div>
           <div class="input-group">
-						<input type="text" id="turno" name="turno">
-						<label class="label" for="turno">Turno:</label>
+						<input type="text" id="nhistoria" name="nhistoria">
+						<label class="label" for="nhistoria">Nro. Historia Médica:</label>
 					</div>
-          <div class="input-group">
-						<input type="text" id="cargo" name="cargo">
-						<label class="label" for="cargo">Cargo:</label>
-					</div>
-					<div class="input-group">
-						<input type="text" id="usuario" name="usuario">
-						<label class="label" for="usuario">Usuario:</label>
-					</div>
-					<div class="input-group">
-						<input type="password" id="pass" name="pass">
-						<label class="label" for="pass">Contraseña:</label>
-					</div>
-					<div class="input-group">
-						<input type="password" id="pass2" name="pass2">
-						<label class="label" for="pass2">Repetir Contraseña:</label>
-					</div>
-
 
 					<input type="submit" id="btn-submit" value="Enviar">
 				</div>
