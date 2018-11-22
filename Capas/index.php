@@ -17,7 +17,7 @@
         <li><a href="#"><span class="tercero"><i class="icon icon-user-check"></i></span>Citas Pendientes</a>
         <li><a href="#"><span class="cuarto"><i class="icon icon-user-plus"></i></span>Nuevo Registro</a>
           <ul>
-            <li><a href="#">Doctor</a></li>
+            <li><a href="DESIGNER/doctores.php">Doctor</a></li>
             <li><a href="DESIGNER/Empleados.php">Empleado</a></li>
             <li><a href="#">Paciente</a></li>
           </ul>

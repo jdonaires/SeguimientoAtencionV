@@ -22,7 +22,7 @@
         <li><a href="#"><span class="tercero"><i class="icon icon-user-check"></i></span>Citas Pendientes</a>
         <li><a href="#"><span class="cuarto"><i class="icon icon-user-plus"></i></span>Nuevo Registro</a>
           <ul>
-            <li><a href="#">Doctor</a></li>
+            <li><a href="doctores.php">Doctor</a></li>
             <li><a href="Empleados.php">Empleado</a></li>
             <li><a href="#">Paciente</a></li>
           </ul>
@@ -82,6 +82,14 @@
 					<div class="input-group">
 						<input type="text" id="estado" name="estado">
 						<label class="label" for="estado">Estado:</label>
+					</div>
+          <div class="input-group">
+						<input type="text" id="turno" name="turno">
+						<label class="label" for="turno">Turno:</label>
+					</div>
+          <div class="input-group">
+						<input type="text" id="cargo" name="cargo">
+						<label class="label" for="cargo">Cargo:</label>
 					</div>
 					<div class="input-group">
 						<input type="text" id="usuario" name="usuario">
