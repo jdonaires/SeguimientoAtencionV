@@ -32,36 +32,6 @@ nav ul{
 nav > ul > li{
 	float: left;
 }
-/** espaciado entre icono y boton **/
-/**Inicio**/
-.menu .icon-home2{
-	display: inline-block;
-	margin-right: 1em;
-}
-
-/**San juan en linea**/
-.menu .icon-sphere{
-	display: inline-block;
-	margin-right: 1em;
-}
-
-/**listar persona**/
-.menu .icon-profile{
-	display: inline-block;
-	margin-right: 1em;
-}
-
-/**insertar lista**/
-.menu .icon-user-plus{
-	display: inline-block;
-	margin-right: 1em;
-}
-
-/**registro de asisitencia**/
-.menu .icon-user-check{
-	display: inline-block;
-	margin-right: 1em;
-}
 
 nav ul li a{
 	text-decoration: none;
