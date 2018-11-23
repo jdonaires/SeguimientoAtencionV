@@ -30,12 +30,12 @@ constraint pk_idarea primary key(idarea)
 );
 #Crear Tabla Usuarios
 create table if not exists usuario(
-idpersona int not null,
+idusuario int auto_increment not null,
 usuario VARCHAR(20) NOT NULL,
 pass VARCHAR(16) NOT NULL,
 
-constraint pk_usuario primary key(idpersona),
-constraint fk_usuarioper foreign key(idpersona) references persona(idpersona)
+constraint pk_usuario primary key(usuario),
+constraint fk_usuarioper foreign key(idusuario) references persona(idpersona)
 );
 
 #Crear Tabla Pacientes
@@ -75,12 +75,15 @@ create table if not exists atencioncitas(
 idatencion int auto_increment not null,
 fecha date null,
 fechacita date  null,
-idpersona int not null,
+iddoctor int not null,
 idarea int not null,
+idpaciente int not null,
 
 constraint pk_idatencion primary key(idatencion),
-constraint fk_idatencion_person foreign key(idpersona) references persona(idpersona),
-constraint fk_idatencion_area foreign key(idarea) references areas(idarea)
+constraint fk_idatencion_doctor foreign key(iddoctor) references doctores(iddoctor),
+constraint fk_idatencion_area foreign key(idarea) references areas(idarea),
+constraint fk_idatencion_paciente foreign key(idpaciente) references paciente(idpaciente)
+
 );
 
 

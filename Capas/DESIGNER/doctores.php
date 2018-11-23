@@ -39,7 +39,7 @@
     </nav>
   </header>
 
-
+<h1>Registrar Doctores</h1>
 
 	<div class="contenedor-formulario">
 		<div class="wrap">

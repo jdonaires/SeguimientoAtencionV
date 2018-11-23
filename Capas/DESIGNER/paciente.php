@@ -39,6 +39,7 @@
     </nav>
   </header>
 
+<h1>Registrar Pacientes</h1>
 
 
 	<div class="contenedor-formulario">

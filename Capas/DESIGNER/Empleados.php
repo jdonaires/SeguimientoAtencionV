@@ -39,7 +39,7 @@
     </nav>
   </header>
 
-
+<h1>Registrar Empleados</h1>
 
 	<div class="contenedor-formulario">
 		<div class="wrap">
