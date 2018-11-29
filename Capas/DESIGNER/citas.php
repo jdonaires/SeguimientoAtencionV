@@ -18,7 +18,7 @@
     <nav>
       <ul>
         <li><a href="../index.php"><span class="primero"><i class="icon icon-home"></i></span>Inicio</a></li>
-        <li><a href="#"><span class="segundo"><i class="icon icon-calendar"></i></span>Nueva Cita</a>
+        <li><a href="citas.php>"><span class="segundo"><i class="icon icon-calendar"></i></span>Nueva Cita</a>
         <li><a href="#"><span class="tercero"><i class="icon icon-user-check"></i></span>Citas Pendientes</a>
         <li><a href="#"><span class="cuarto"><i class="icon icon-user-plus"></i></span>Nuevo Registro</a>
           <ul>
