@@ -7,7 +7,7 @@ class empleadoDAO
 {
   private $pdo;
   public function __CONSTRUC();
-}
+{
           $dba = NEW DBAccess();
           $this->pdo = $dba->get_connection();
 }
@@ -17,19 +17,19 @@ public function insertarEmpleado(empleado $empleado, persona $persona)
         try {
             $statement = $this->pdo->prepare("call up_insertar_persona_empleados(?,?,?,?,?,?,?,?,?,?,?,?)");
 
-            $statement->bindValue(1,  $persona->__GET('nombres'));
-            $statement->bindValue(2,  $persona->__GET('apellidos'));
-            $statement->bindValue(3,  $persona->__GET('dni'));
-            $statement->bindValue(4,  $persona->__GET('direccion'));
-            $statement->bindValue(5,  $persona->__GET('fecnac'));
-            $statement->bindValue(6,  $persona->__GET('genero'));
-            $statement->bindValue(7,  $persona->__GET('email'));
-            $statement->bindValue(8,  $persona->__GET('telefono'));
-            $statement->bindValue(9,  $persona->__GET('estado'));
-            $statement->bindValue(10, $persona->__GET('tipo'));
+            $statement->bindParam(1,$persona->__GET('nombres'));
+            $statement->bindParam(2,$persona->__GET('apellidos'));
+            $statement->bindParam(3,$persona->__GET('dni'));
+            $statement->bindParam(4,$persona->__GET('direccion'));
+            $statement->bindParam(5,$persona->__GET('fecnac'));
+            $statement->bindParam(6,$persona->__GET('genero'));
+            $statement->bindParam(7,$persona->__GET('email'));
+            $statement->bindParam(8,$persona->__GET('telefono'));
+            $statement->bindParam(9,$persona->__GET("estado"));
+            $statement->bindParam(10,$persona->__GET('tipo'));
 
-            $statement->bindValue(11,  $empleado->__GET('turno'));
-            $statement->bindValue(12, $empleado->__GET('cargo'));
+            $statement->bindParam(11,  $empleado->__GET('turno'));
+            $statement->bindParam(12, $empleado->__GET('cargo'));
 
 
 
@@ -38,10 +38,11 @@ public function insertarEmpleado(empleado $empleado, persona $persona)
 
             return $count;
 
-        } catch (Exception $e) {
+        } catch (Exception $e)
+         {
             die("insertarempleado function  ->" . $e->getMessage());
         }
     }
-
+}
 
  ?>
