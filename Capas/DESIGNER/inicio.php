@@ -152,7 +152,7 @@ margin-top: 80px;
                         </div>
 
                         </div>
-                        <div class="panel panel-primary">
+                          <div class="panel panel-primary">
                           <div class="panel-heading">
                              <h3>Informes</h3>
                            </div>
