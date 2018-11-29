@@ -1,4 +1,39 @@
 <?php
+require_once('../DAO/empleadoDAO.php');
+require_once('../BOL/persona.php');
+require_once('../BOL/empleados.php');
+require_once('../BOL/usuarios.php');
+
+$per = new Persona();
+$emp = new empleado();
+$user = new Usuarios();
+$reg = new empleadoDAO();
+
+if(isset($_POST['guardar']))
+{
+  $per->__SET('nombres',          $_POST['nombres']);
+	$per->__SET('apellidos',        $_POST['apellidos']);
+	$per->__SET('dni', 							$_POST['dni']);
+	$per->__SET('direccion', 				$_POST['direccion']);
+	$per->__SET('fecnac', 					$_POST['fecnac']);
+	$per->__SET('genero', 					$_POST['genero']);
+	$per->__SET('email', 						$_POST['email']);
+	$per->__SET('telefono', 				$_POST['telefono']);
+	$per->__SET('estado', 					$_POST['estado']);
+	$per->__SET('tipo', 						$_POST['tipo']);
+
+  $emp->__SET('turno', 					$_POST['turno']);
+	$emp->__SET('cargo', 						$_POST['cargo']);
+
+  $user->__SET('usuario', 					$_POST['usuario']);
+  $user->__SET('pass', 						$_POST['pass']);
+
+
+
+	$reg->Registrar($per,$emp,$user);
+	header('Location: Empleados.php');
+}
+
  ?>
 
  <!DOCTYPE html>
@@ -43,7 +78,7 @@
 
 	<div class="contenedor-formulario">
 		<div class="wrap">
-			<form action="" class="formulario" name="formulario_registro" method="post">
+			<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" class="formulario" name="formulario_registro" method="post">
 				<div>
 					<div class="input-group">
 						<input type="text" id="nombre" name="nombre">
@@ -105,7 +140,7 @@
 					</div>
 
 
-					<input type="submit" id="btn-submit" value="Enviar">
+					<input type="submit" id="btn-submit"  name="guardar">
 				</div>
 			</form>
 		</div>

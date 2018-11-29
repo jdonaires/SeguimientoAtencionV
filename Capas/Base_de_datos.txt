@@ -1,24 +1,23 @@
 #Base de Datos Seguimiento de Atencion
 drop database if exists seguimientoatencion;
-cr#Base de Datos Seguimiento de Atencion
-drop database if exists seguimientoatencion;
 create database if not exists seguimientoatencion;
 use seguimientoatencion;
 
 #Crear Tabla Personas
-CREATE TABLE IF NOT EXISTS persona (
-    idpersona INT AUTO_INCREMENT NOT NULL,
-    nombres VARCHAR(45) NOT NULL,
-    apellidos VARCHAR(45) NOT NULL,
-    dni INT(8) NOT NULL UNIQUE,
-    direccion VARCHAR(80) NOT NULL,
-    fecnac DATE NOT NULL,
-    genero ENUM('masculino', 'femenino') NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    telefono INT(9) NULL,
-    estado ENUM('activo', 'inactivo') NOT NULL,
-    tipo ENUM('paciente', 'doctor', 'empleado') NOT NULL,
-    CONSTRAINT pk_idpersona PRIMARY KEY (idpersona)
+create table if not exists persona(
+idpersona int auto_increment not null,
+nombres varchar(45) not null,
+apellidos varchar(45) not null,
+dni int(8) not null unique,
+direccion varchar(80) not null,
+fecnac date not null,
+genero enum ('masculino','femenino')  not null,
+email varchar(50) not null unique,
+telefono int(9)  null,
+estado enum ('activo','inactivo') not null,
+tipo enum ('paciente','doctor','empleado') not null,
+
+constraint pk_idpersona primary key(idpersona)
 );
 
 
@@ -34,9 +33,8 @@ create table if not exists usuario(
 idusuario int auto_increment not null,
 usuario VARCHAR(20) NOT NULL,
 pass VARCHAR(16) NOT NULL,
-idpersona int not null,
 
-constraint pk_usuario primary key(idusuario),
+constraint pk_usuario primary key(usuario),
 constraint fk_usuarioper foreign key(idusuario) references persona(idpersona)
 );
 
@@ -210,13 +208,18 @@ CREATE PROCEDURE up_insertar_persona_empleados(
         IN _tipo varchar(20),
 
         IN _turno varchar(20),
-        IN _cargo varchar(10)
+        IN _cargo varchar(10),
+
+        IN _usuario varchar(15),
+        IN _pass varchar(15)
 )
 BEGIN
 		insert into persona (nombres,apellidos,dni,direccion,fecnac,genero,email,telefono,estado,tipo)
 		values (_nombres,_apellidos,_dni,_direccion,_fecnac,_genero,_email,_telefono,_estado,_tipo);
         insert into empleados (turno,cargo)
         values (_turno, _cargo);
+        insert into usuario (usuario,pass)
+        values(_usuario, _pass);
 END ;;
 
 DELIMITER ;;
@@ -227,11 +230,11 @@ CREATE PROCEDURE up_insertar_persona_doctores(
 		IN _direccion varchar(80),
 		IN _fecnac date,
         IN _genero varchar(1),
-
         IN _email varchar(50),
         IN _telefono int(9),
         IN _estado varchar(10),
         IN _tipo varchar(20),
+
         IN _especialidad varchar(20),
         IN _turno varchar(10)
 )

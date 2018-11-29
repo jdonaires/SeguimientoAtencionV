@@ -2,20 +2,21 @@
 require_once('../DAL/DBAccess.php');
 require_once('../BOL/empleados.php');
 require_once('../BOL/persona.php');
+require_once('../BOL/usuarios.php');
 
 class empleadoDAO
 {
   private $pdo;
-  public function __CONSTRUC();
+  public function __CONSTRUCT()
 {
           $dba = NEW DBAccess();
           $this->pdo = $dba->get_connection();
 }
 
-public function insertarEmpleado(empleado $empleado, persona $persona)
+public function insertarEmpleado(persona $persona, empleado $empleado, usuario $usuarios)
     {
         try {
-            $statement = $this->pdo->prepare("call up_insertar_persona_empleados(?,?,?,?,?,?,?,?,?,?,?,?)");
+            $statement = $this->pdo->prepare("call up_insertar_persona_empleados(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
             $statement->bindParam(1,$persona->__GET('nombres'));
             $statement->bindParam(2,$persona->__GET('apellidos'));
@@ -31,12 +32,10 @@ public function insertarEmpleado(empleado $empleado, persona $persona)
             $statement->bindParam(11,  $empleado->__GET('turno'));
             $statement->bindParam(12, $empleado->__GET('cargo'));
 
-
-
+            $statement->bindParam(13,  $usuarios->__GET('usuario'));
+            $statement->bindParam(14, $usuarios->__GET('pass'));
             $statement->execute();
-            $count = $statement->rowCount();
 
-            return $count;
 
         } catch (Exception $e)
          {
